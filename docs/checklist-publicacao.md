@@ -13,7 +13,7 @@ Antes de divulgar no GitHub/LinkedIn:
 Sugestao de nome para o repositorio:
 
 ```text
-ecu-didatica-pic16f877a
+ecu-pic16f877a
 ```
 
 Descricao curta para o GitHub:
@@ -27,4 +27,3 @@ Topicos sugeridos:
 ```text
 pic16f877a, embedded-c, microcontrollers, mplab-x, xc8, proteus, kicad, ecu, embedded-systems
 ```
-

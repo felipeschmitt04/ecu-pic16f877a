@@ -1,4 +1,4 @@
-# ECU Didatica com PIC16F877A
+# ECU com PIC16F877A
 
 Projeto academico desenvolvido para a disciplina de **Microprocessadores e
 Microcontroladores** do curso de Engenharia de Computacao da UFSC. A proposta
@@ -131,4 +131,3 @@ simulacao e projeto de placa.
 - Gravar um video curto demonstrando a simulacao.
 - Criar uma versao refatorada do firmware com menor uso de memoria.
 - Documentar os mapas de injecao e os estados da ECU em mais detalhes.
-
