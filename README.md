@@ -1,133 +1,134 @@
-# ECU com PIC16F877A
+# ECU with PIC16F877A
 
-Projeto academico desenvolvido para a disciplina de **Microprocessadores e
-Microcontroladores** do curso de Engenharia de Computacao da UFSC. A proposta
-foi construir uma ECU didatica para simular o controle basico de um motor de
-combustao, integrando firmware embarcado, leitura de sensores, controle de
-atuadores, interface LCD, simulacao e projeto de PCB.
+Academic embedded systems project developed for a **Microprocessors and
+Microcontrollers** course in the Computer Engineering program at UFSC. The goal
+was to build an educational ECU prototype that simulates basic combustion engine
+control while integrating embedded firmware, sensor acquisition, actuator
+control, an LCD interface, circuit simulation, and PCB design.
 
-> **Aviso:** este projeto tem finalidade educacional e de portifolio. Ele nao
-> foi validado para uso automotivo real, nem deve ser usado para controlar um
-> motor real sem revisoes eletricas, mecanicas e de seguranca apropriadas.
+> **Disclaimer:** this project is intended for academic and portfolio purposes.
+> It has not been validated for real automotive use and must not be used to
+> control an actual engine without proper electrical, mechanical, and safety
+> reviews.
 
-## Visao Geral
+## Overview
 
-A ECU foi implementada em C para o microcontrolador **PIC16F877A**, usando
-MPLAB X e compilador XC8. O sistema le entradas analogicas simulando sensores,
-aplica mapas de injecao, controla bicos, ignicao e atuadores auxiliares, e
-exibe informacoes no LCD 16x2.
+The ECU firmware was written in C for the **PIC16F877A** microcontroller using
+MPLAB X and the XC8 compiler. The system reads simulated analog sensors, applies
+fuel injection maps, controls injectors, ignition outputs, auxiliary actuators,
+and displays runtime data on a 16x2 LCD.
 
-O projeto tambem inclui:
+The project includes:
 
-- simulacao do circuito no Proteus;
-- esquematico e PCB no KiCad;
-- mapas de injecao economico e performance;
-- persistencia do mapa ativo na EEPROM interna;
-- interface por botoes e display LCD;
-- controle por timers e interrupcoes.
+- Proteus circuit simulation;
+- KiCad schematic and PCB design;
+- economy and performance injection maps;
+- active map persistence using internal EEPROM;
+- button-based user interface with LCD feedback;
+- timer and interrupt-driven control logic.
 
-## Funcionalidades
+## Features
 
-- Leitura ADC de sensores simulados:
+- ADC reading for simulated sensors:
   - TPS;
   - RPM;
-  - sonda lambda;
-  - temperatura.
-- Dois mapas de injecao:
-  - economico;
+  - lambda/oxygen sensor;
+  - temperature.
+- Two injection maps:
+  - economy;
   - performance.
-- Controle de bicos injetores em sequencia.
-- Controle de ignicao em pares.
-- Controle auxiliar de:
-  - bomba de combustivel;
-  - radiador;
-  - motor de partida;
-  - LED de check engine.
-- Modo de malha aberta e malha fechada simulada.
-- Corte por limite de RPM.
-- Enriquecimento de partida.
-- Interface LCD com modos de visualizacao.
+- Sequential injector control.
+- Paired ignition output control.
+- Auxiliary actuator control:
+  - fuel pump;
+  - radiator fan;
+  - starter motor;
+  - check engine LED.
+- Simulated open-loop and closed-loop modes.
+- RPM limiter.
+- Start enrichment logic.
+- Multi-screen 16x2 LCD interface.
 
-## Arquitetura
+## Architecture
 
 ```mermaid
 flowchart LR
-    A["Sensores simulados<br/>TPS, RPM, lambda, temperatura"] --> B["ADC do PIC16F877A"]
-    B --> C["Logica da ECU<br/>mapas, correcoes e limites"]
-    C --> D["Timers e interrupcoes"]
-    D --> E["Bicos injetores"]
-    D --> F["Ignicao"]
-    C --> G["Atuadores auxiliares<br/>bomba, radiador, partida"]
-    C --> H["LCD 16x2"]
-    I["Botoes"] --> C
-    C --> J["EEPROM interna<br/>mapa ativo"]
+    A["Simulated sensors<br/>TPS, RPM, lambda, temperature"] --> B["PIC16F877A ADC"]
+    B --> C["ECU logic<br/>maps, corrections, limits"]
+    C --> D["Timers and interrupts"]
+    D --> E["Injectors"]
+    D --> F["Ignition outputs"]
+    C --> G["Auxiliary actuators<br/>pump, fan, starter"]
+    C --> H["16x2 LCD"]
+    I["Buttons"] --> C
+    C --> J["Internal EEPROM<br/>active map"]
 ```
 
-## Estrutura do Projeto
+## Project Structure
 
 ```text
 .
 ├── Software-MPLab/
-│   └── ecu_final.X/        # Firmware em C para MPLAB X / XC8
-├── Hardware-Proteus/       # Simulacao do circuito
+│   └── ecu_final.X/        # C firmware for MPLAB X / XC8
+├── Hardware-Proteus/       # Circuit simulation
 ├── PCB-Kicad/
-│   └── ecu/                # Esquematico e PCB
-└── docs/                   # Documentacao de portfolio e notas tecnicas
+│   └── ecu/                # Schematic and PCB files
+└── docs/                   # Technical notes and portfolio assets
 ```
 
-## Tecnologias Utilizadas
+## Technologies
 
-- **Linguagem:** C
-- **Microcontrolador:** PIC16F877A
-- **IDE/Compilador:** MPLAB X + XC8
-- **Simulacao:** Proteus
-- **Projeto de PCB:** KiCad
-- **Interface:** LCD 16x2 em modo 4 bits
+- **Language:** C
+- **Microcontroller:** PIC16F877A
+- **IDE/Compiler:** MPLAB X + XC8
+- **Simulation:** Proteus
+- **PCB Design:** KiCad
+- **Interface:** 16x2 LCD in 4-bit mode
 
-## Como Abrir
+## How to Open
 
 ### Firmware
 
-1. Abra o projeto `Software-MPLab/ecu_final.X` no MPLAB X.
-2. Confirme que o dispositivo selecionado e o `PIC16F877A`.
-3. Compile com o XC8.
+1. Open `Software-MPLab/ecu_final.X` in MPLAB X.
+2. Confirm that the selected device is `PIC16F877A`.
+3. Build the project with the XC8 compiler.
 
-### Simulacao
+### Simulation
 
-1. Abra `Hardware-Proteus/ecu3.pdsprj` no Proteus.
-2. Associe o arquivo `.hex` gerado pelo MPLAB ao microcontrolador da simulacao,
-   caso necessario.
-3. Execute a simulacao e varie os sensores para observar o comportamento da ECU.
+1. Open `Hardware-Proteus/ecu3.pdsprj` in Proteus.
+2. Attach the `.hex` file generated by MPLAB to the simulated microcontroller,
+   if required.
+3. Run the simulation and vary the sensor inputs to observe the ECU behavior.
 
 ### PCB
 
-1. Abra `PCB-Kicad/ecu/ecu.kicad_pro` no KiCad.
-2. Revise o esquematico.
-3. Rode ERC/DRC antes de qualquer fabricacao.
+1. Open `PCB-Kicad/ecu/ecu.kicad_pro` in KiCad.
+2. Review the schematic and PCB layout.
+3. Run ERC/DRC before considering any manufacturing step.
 
-## Limitacoes Conhecidas
+## Known Limitations
 
-Este projeto foi desenvolvido como prototipo academico. Alguns pontos que
-merecem evolucao antes de qualquer uso fora de simulacao:
+This project was developed as an academic prototype. Before any use beyond
+simulation, the following areas would need additional work:
 
-- revisar o dimensionamento eletrico dos drivers de cargas indutivas;
-- substituir calculos em `float` por aritmetica inteira/fixa para reduzir uso
-  de memoria de programa;
-- reforcar protecoes de variaveis compartilhadas entre `main` e interrupcoes;
-- revisar buffers e formatacao do LCD;
-- tornar o build reproduzivel fora do ambiente original;
-- rodar e registrar ERC/DRC do KiCad.
+- validate the electrical sizing of inductive load drivers;
+- replace floating-point calculations with integer or fixed-point arithmetic to
+  reduce program memory usage;
+- protect variables shared between `main` and interrupt routines;
+- review LCD buffers and string formatting;
+- make the build reproducible outside the original MPLAB/XC8 environment;
+- run and document KiCad ERC/DRC results.
 
-## Resultado
+## Outcome
 
-O projeto foi apresentado na disciplina de Microprocessadores e
-Microcontroladores e recebeu nota maxima. Ele representa uma integracao pratica
-entre firmware embarcado, eletronica digital/analogica, controle em tempo real,
-simulacao e projeto de placa.
+The project was presented for the Microprocessors and Microcontrollers course
+and received the maximum grade. It demonstrates practical integration between
+embedded firmware, analog/digital electronics, real-time control, circuit
+simulation, and PCB design.
 
-## Proximos Passos
+## Next Steps
 
-- Adicionar imagens da simulacao e da PCB em `docs/imagens/`.
-- Gravar um video curto demonstrando a simulacao.
-- Criar uma versao refatorada do firmware com menor uso de memoria.
-- Documentar os mapas de injecao e os estados da ECU em mais detalhes.
+- Add Proteus simulation and KiCad PCB screenshots to `docs/images/`.
+- Record a short simulation demo video.
+- Refactor the firmware to reduce memory usage.
+- Document the injection maps and ECU states in more detail.
