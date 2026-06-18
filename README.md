@@ -125,10 +125,3 @@ The project was presented for the Microprocessors and Microcontrollers course
 and received the maximum grade. It demonstrates practical integration between
 embedded firmware, analog/digital electronics, real-time control, circuit
 simulation, and PCB design.
-
-## Next Steps
-
-- Add Proteus simulation and KiCad PCB screenshots to `docs/images/`.
-- Record a short simulation demo video.
-- Refactor the firmware to reduce memory usage.
-- Document the injection maps and ECU states in more detail.
