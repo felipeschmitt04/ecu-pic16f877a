@@ -50,6 +50,9 @@ value defines the base injector pulse time. The ECU also applies additional
 rules for engine start, RPM limiting, deceleration fuel cut, and lambda-based
 correction in simulated closed-loop mode.
 
+A more detailed explanation of the runtime behavior is available in
+[ECU operation](ecu-operation.md).
+
 ## Learning Outcomes
 
 - Peripheral configuration on an 8-bit microcontroller.
@@ -67,4 +70,3 @@ correction in simulated closed-loop mode.
 - Add logic tests for maps and limit conditions.
 - Document the project with Proteus screenshots and KiCad renders.
 - Review ERC/DRC results and document them in the repository.
-

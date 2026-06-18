@@ -49,6 +49,35 @@ The project includes:
 - Start enrichment logic.
 - Multi-screen 16x2 LCD interface.
 
+## How the ECU Works
+
+The firmware runs a simple ECU control loop around four simulated analog
+signals: throttle position, RPM, lambda/oxygen feedback, and temperature. Each
+loop iteration reads the sensors through the PIC ADC, updates the engine state,
+selects a fuel value from a 16x16 lookup table, applies correction rules, and
+updates the auxiliary actuators and LCD.
+
+The fuel maps use RPM and TPS as axes. The 10-bit ADC readings are compressed
+to 4-bit indexes, producing 16 RPM bands and 16 throttle bands:
+
+```c
+rpm_index = adc_rpm >> 6;
+tps_index = adc_tps >> 6;
+map_index = rpm_index * 16 + tps_index;
+```
+
+Two maps are available: an economy map with lower base injection values and a
+performance map with richer values. The selected map is stored in internal
+EEPROM so the ECU can restore it after a reset.
+
+Timer1 schedules the engine events according to the simulated RPM. On each
+Timer1 interrupt, the firmware advances a four-step engine sequence, triggers
+one ignition pair, and opens one injector. Timer2 then controls the injector
+pulse width and turns all injectors off when the pulse ends.
+
+For a deeper breakdown of the sensors, maps, correction logic, and actuator
+states, see [ECU operation](docs/ecu-operation.md).
+
 ## Architecture
 
 ```mermaid
