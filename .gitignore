@@ -1,0 +1,48 @@
+# MPLAB X / XC8 generated artifacts
+Software-MPLab/**/build/
+Software-MPLab/**/dist/
+Software-MPLab/**/debug/
+Software-MPLab/**/production/
+Software-MPLab/**/*.p1
+Software-MPLab/**/*.d
+Software-MPLab/**/*.i
+Software-MPLab/**/*.o
+Software-MPLab/**/*.elf
+Software-MPLab/**/*.hex
+Software-MPLab/**/*.cof
+Software-MPLab/**/*.map
+Software-MPLab/**/*.lst
+Software-MPLab/**/*.sym
+Software-MPLab/**/*.rlf
+Software-MPLab/**/*.sdb
+Software-MPLab/**/*.cmf
+Software-MPLab/**/*.hxl
+Software-MPLab/**/*.mum
+Software-MPLab/**/memoryfile.xml
+Software-MPLab/**/nbproject/private/
+Software-MPLab/**/nbproject/Makefile-local-*.mk
+Software-MPLab/**/nbproject/Makefile-genesis.properties
+
+# KiCad local/cache/backup files
+PCB-Kicad/**/*-backups/
+PCB-Kicad/**/_autosave-*/
+PCB-Kicad/**/_autosave-*
+PCB-Kicad/**/*.lck
+PCB-Kicad/**/*~
+PCB-Kicad/**/*.tmp
+PCB-Kicad/**/fp-info-cache
+PCB-Kicad/**/*.kicad_prl
+PCB-Kicad/**/*-bak
+PCB-Kicad/**/*_pretrilhas.*
+PCB-Kicad/**/ecu_pretrilhas.*
+
+# Proteus local workspaces and backups
+Hardware-Proteus/**/Project Backups/
+Hardware-Proteus/**/*.workspace
+Hardware-Proteus/**/*.workspace.xml
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
