@@ -27,6 +27,32 @@ The project includes:
 - button-based user interface with LCD feedback;
 - timer and interrupt-driven control logic.
 
+## Visual Documentation
+
+The repository includes exported hardware views that document the path from the
+electrical design to the final PCB layout.
+
+![KiCad schematic of the ECU circuit](docs/images/esquematico.png)
+
+The schematic centers on the PIC16F877A and shows the simulated sensor inputs,
+LCD interface, user buttons, power connections, and MOSFET-based output stages
+used to represent injectors, ignition pairs, the fuel pump, radiator fan,
+starter motor, and warning indicators.
+
+![KiCad PCB routing view](docs/images/design-pcb.png)
+
+The PCB layout shows the two-layer board routing, with the LCD and user controls
+placed on the front side and the sensor/actuator connectors distributed around
+the board edges for easier access during testing.
+
+| Front side | Back side |
+| --- | --- |
+| ![Front render of the ECU PCB](docs/images/frente-pcb.png) | ![Back render of the ECU PCB](docs/images/tras-pcb.png) |
+
+The 3D renders highlight the intended physical organization of the prototype:
+LCD and buttons on the user-facing side, and the microcontroller, connectors,
+crystal oscillator, potentiometer, and driver stages on the opposite side.
+
 ## Features
 
 - ADC reading for simulated sensors:

@@ -53,6 +53,18 @@ correction in simulated closed-loop mode.
 A more detailed explanation of the runtime behavior is available in
 [ECU operation](ecu-operation.md).
 
+## Hardware Documentation
+
+The `docs/images` directory contains exported views used to document the
+hardware portion of the project:
+
+- `esquematico.png`: KiCad schematic with the PIC16F877A, simulated analog
+  sensors, LCD, buttons, and actuator driver stages.
+- `design-pcb.png`: PCB routing view showing the two-layer board layout.
+- `frente-pcb.png`: front 3D render with the LCD, user controls, and silkscreen.
+- `tras-pcb.png`: back 3D render with the microcontroller, connectors, crystal,
+  potentiometer, and output driver circuitry.
+
 ## Learning Outcomes
 
 - Peripheral configuration on an 8-bit microcontroller.
@@ -68,5 +80,5 @@ A more detailed explanation of the runtime behavior is available in
 - Replace floating-point calculations with fixed-point arithmetic.
 - Add abstraction layers for the LCD and actuators.
 - Add logic tests for maps and limit conditions.
-- Document the project with Proteus screenshots and KiCad renders.
+- Add Proteus screenshots to complement the KiCad schematic and PCB renders.
 - Review ERC/DRC results and document them in the repository.
